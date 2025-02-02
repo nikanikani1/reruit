@@ -1,0 +1,17 @@
+server:
+  port: 8101
+spring:
+  # 数据库配置
+  # todo 需替换配置
+  # 数据库配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/recruit?serverTimezone=GMT%2B8&characterEncoding=utf8&&allowMultiQueries=true&useSSL=false
+    username: root
+    password: wht123456
+  # Redis 配置
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    timeout: 5000
