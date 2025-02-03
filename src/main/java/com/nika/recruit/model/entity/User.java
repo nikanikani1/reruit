@@ -46,7 +46,7 @@ public class User implements Serializable {
     private String userProfile;
 
     /**
-     * 用户角色：user/jobseeker/jobfinder
+     * 用户角色：jobseeker/jobfinder
      */
     private String userRole;
 

@@ -1,6 +1,7 @@
 package com.nika.recruit.controller;
 
 
+import com.nika.recruit.annotation.AuthCheck;
 import com.nika.recruit.base.BaseResponse;
 import com.nika.recruit.base.ErrorCode;
 import com.nika.recruit.base.ResultUtils;
@@ -98,6 +99,7 @@ public class UserController {
      * @return
      */
     @GetMapping("/get/login")
+    @AuthCheck
     public BaseResponse<UserVO> getLoginUser(HttpServletRequest request) {
         User user = userService.getLoginUser(request);
         return ResultUtils.success(userService.getLoginUserVO(user));
