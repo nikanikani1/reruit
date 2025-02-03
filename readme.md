@@ -29,7 +29,6 @@ jdk1.8
 │  │  │              ├─config  配置代码
 │  │  │              ├─constants 常量信息
 │  │  │              ├─controller  控制类
-│  │  │              ├─enums 枚举类
 │  │  │              ├─exception  异常类
 │  │  │              ├─job  定时任务
 │  │  │              ├─mapper  
