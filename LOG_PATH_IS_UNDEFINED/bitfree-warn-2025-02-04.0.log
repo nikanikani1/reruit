@@ -1,1 +1,0 @@
-2025-02-04 23:53:38.371 []  WARN 37868 [restartedMain] o.m.s.mapper.ClassPathMapperScanner      44 : No MyBatis mapper was found in '[com.yupi.springbootinit.mapper]' package. Please check your configuration.

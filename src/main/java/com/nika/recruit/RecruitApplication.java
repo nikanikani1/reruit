@@ -17,6 +17,8 @@ public class RecruitApplication {
     public static void main(String[] args) {
         ConfigurableApplicationContext applicationContext = SpringApplication.run(RecruitApplication.class, args);
         ConfigurableEnvironment environment = applicationContext.getEnvironment();
+        String activeEnv = environment.getProperty("spring.profiles.active");
+        log.info("current config yml : " + activeEnv);
         String port = environment.getProperty("server.port");
         log.info("swagger 接口测试访问地址 http://localhost:" + port + "/api/doc.html");
     }

@@ -1,6 +1,8 @@
 server:
   port: 8101
 spring:
+  profiles:
+    active: dev
   # 数据库配置
   # todo 需替换配置
   # 数据库配置
@@ -15,3 +17,5 @@ spring:
     host: 127.0.0.1
     port: 6379
     timeout: 5000
+
+LOG_PATH: ./logs
