@@ -1,7 +1,8 @@
-package com.nika.recruit.exception;
+package com.nika.recruit.utils;
 
 
 import com.nika.recruit.base.ErrorCode;
+import com.nika.recruit.exception.BusinessException;
 
 /**
  * 抛异常工具类

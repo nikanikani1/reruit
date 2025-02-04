@@ -6,7 +6,7 @@ import com.nika.recruit.base.BaseResponse;
 import com.nika.recruit.base.ErrorCode;
 import com.nika.recruit.base.ResultUtils;
 import com.nika.recruit.exception.BusinessException;
-import com.nika.recruit.exception.ThrowUtils;
+import com.nika.recruit.utils.ThrowUtils;
 import com.nika.recruit.model.dto.user.UserLoginRequest;
 import com.nika.recruit.model.dto.user.UserRegisterRequest;
 import com.nika.recruit.model.dto.user.UserUpdateMyRequest;
@@ -49,10 +49,11 @@ public class UserController {
         String userAccount = userRegisterRequest.getUserAccount();
         String userPassword = userRegisterRequest.getUserPassword();
         String checkPassword = userRegisterRequest.getCheckPassword();
-        if (StringUtils.isAnyBlank(userAccount, userPassword, checkPassword)) {
+        String userRole = userRegisterRequest.getUserRole();
+        if (StringUtils.isAnyBlank(userAccount, userPassword, checkPassword,userRole)) {
             return null;
         }
-        long result = userService.userRegister(userAccount, userPassword, checkPassword);
+        long result = userService.userRegister(userAccount, userPassword, checkPassword,userRole);
         return ResultUtils.success(result);
     }
 
@@ -98,7 +99,7 @@ public class UserController {
      * @param request
      * @return
      */
-    @GetMapping("/get/login")
+    @GetMapping("/me")
     @AuthCheck
     public BaseResponse<UserVO> getLoginUser(HttpServletRequest request) {
         User user = userService.getLoginUser(request);
@@ -114,7 +115,8 @@ public class UserController {
      * @param request
      * @return
      */
-    @PostMapping("/update/my")
+    @PostMapping("/update/me")
+    @AuthCheck
     public BaseResponse<Boolean> updateMyUser(@RequestBody UserUpdateMyRequest userUpdateMyRequest,
             HttpServletRequest request) {
         if (userUpdateMyRequest == null) {

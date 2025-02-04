@@ -10,6 +10,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -22,6 +23,7 @@ import javax.servlet.http.HttpServletRequest;
  * 权限校验 AOP
  */
 @Aspect
+@Order(1)
 @Component
 public class AuthInterceptor {
 

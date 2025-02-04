@@ -6,6 +6,7 @@ import java.io.Serializable;
 
 /**
  * 用户注册请求体
+ * @author ht
  */
 @Data
 public class UserRegisterRequest implements Serializable {
@@ -17,4 +18,6 @@ public class UserRegisterRequest implements Serializable {
     private String userPassword;
 
     private String checkPassword;
+
+    private String userRole;
 }

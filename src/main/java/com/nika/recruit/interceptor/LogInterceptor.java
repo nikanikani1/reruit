@@ -5,6 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StopWatch;
 import org.springframework.web.context.request.RequestAttributes;
@@ -16,10 +17,10 @@ import java.util.UUID;
 
 /**
  * 请求响应日志 AOP
- *
  **/
 @Aspect
 @Component
+@Order(2)
 @Slf4j
 public class LogInterceptor {
 

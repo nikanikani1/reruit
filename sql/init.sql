@@ -20,8 +20,18 @@ create table if not exists user
 ) comment '用户' collate = utf8mb4_unicode_ci;
 
 
--- 用户表
-create table if not exists job_finder
-(
-) comment '求职者' collate = utf8mb4_unicode_ci;
+-- 简历表
+CREATE TABLE resume (
+    resumeId bigint AUTO_INCREMENT PRIMARY KEY COMMENT '简历的唯一标识符',
+    userId INT NOT NULL COMMENT '关联的用户ID，指向users表',
+    realName VARCHAR(255) NOT NULL COMMENT '真实姓名',
+    summary TEXT COMMENT '个人简介或职业概述',
+    experience TEXT COMMENT '工作经历，JSON格式存储详细经历',
+    education TEXT COMMENT '教育背景，JSON格式存储详细信息',
+    skills TEXT COMMENT '技能列表，JSON格式存储',
+    createTime   datetime     default CURRENT_TIMESTAMP not null comment '创建时间',
+    updateTime   datetime     default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '更新时间',
+    isDelete     tinyint      default 0                 not null comment '是否删除'
+) COMMENT='简历表，存储用户的简历信息';
+
 
