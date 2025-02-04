@@ -44,3 +44,8 @@ jdk1.8
 │  │      └─mapper
 ```
 
+### Quick Start
+
+1. 将application.yml里的mysql和redis密码替换成自己的
+2. 启动项目
+3. 访问：http://localhost:8990/api/doc.html 查看接口
