@@ -8,11 +8,13 @@ import com.nika.recruit.base.BaseResponse;
 import com.nika.recruit.base.ErrorCode;
 import com.nika.recruit.base.ResultUtils;
 import com.nika.recruit.exception.BusinessException;
+import com.nika.recruit.service.event.SaveResumeEvent;
 import com.nika.recruit.utils.ThrowUtils;
 import com.nika.recruit.model.entity.Resume;
 import com.nika.recruit.service.ResumeService;
 import com.nika.recruit.service.UserService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -33,6 +35,10 @@ public class ResumeController {
     @Resource
     private UserService userService;
 
+
+    @Resource
+    private ApplicationEventPublisher publisher;
+
     /**
      * add resume
      * @return
@@ -43,6 +49,7 @@ public class ResumeController {
     public BaseResponse<Boolean> addResume(@RequestBody Resume resume,HttpServletRequest request) {
         boolean result = resumeService.add(resume,userService.getLoginUser(request).getId());
         ThrowUtils.throwIf(!result,new BusinessException(ErrorCode.SYSTEM_ERROR,"添加失败"));
+        publisher.publishEvent(new SaveResumeEvent(resume.getResumeId(), resume.getUserId()));
         return ResultUtils.success(true);
     }
 
@@ -68,10 +75,11 @@ public class ResumeController {
     @ParameterCheck
     @AuthCheck
     public BaseResponse<Boolean> updateResume(@RequestBody Resume resume) {
-        return ResultUtils.success(resumeService.update(resume));
+        boolean res = resumeService.update(resume);
+        if(res){
+            publisher.publishEvent(new SaveResumeEvent(resume.getResumeId(), resume.getUserId()));
+        }
+        return ResultUtils.success(res);
     }
-
-
-
 
 }

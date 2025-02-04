@@ -9,12 +9,15 @@ import com.nika.recruit.mapper.UserMapper;
 import com.nika.recruit.model.entity.User;
 import com.nika.recruit.model.vo.UserVO;
 import com.nika.recruit.service.UserService;
+import com.nika.recruit.service.event.UserRegisterEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import static com.nika.recruit.constants.UserConstant.USER_LOGIN_STATE;
@@ -31,6 +34,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
      * 盐值，混淆密码
      */
     private static final String SALT = "nika";
+
+
+    @Resource
+    private ApplicationEventPublisher publisher;
 
     @Override
     public long userRegister(String userAccount, String userPassword, String checkPassword,String userRole) {
@@ -70,6 +77,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             if (!saveResult) {
                 throw new BusinessException(ErrorCode.SYSTEM_ERROR, "注册失败，数据库错误");
             }
+            publisher.publishEvent(new UserRegisterEvent(user.getId()));
             return user.getId();
         }
     }

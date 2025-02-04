@@ -1,0 +1,21 @@
+2025-02-04 23:53:37.743 []  INFO 37868 [background-preinit] o.h.validator.internal.util.Version      21 : HV000001: Hibernate Validator 6.1.6.Final
+2025-02-04 23:53:37.749 []  INFO 37868 [restartedMain] com.nika.recruit.RecruitApplication      55 : Starting RecruitApplication using Java 1.8.0_351 on DESKTOP-01IBP44 with PID 37868 (E:\code\bishe\recruit\target\classes started by ht in E:\code\bishe\recruit)
+2025-02-04 23:53:37.749 []  INFO 37868 [restartedMain] com.nika.recruit.RecruitApplication      651 : The following 1 profile is active: "dev"
+2025-02-04 23:53:37.773 []  INFO 37868 [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor 255 : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-02-04 23:53:37.773 []  INFO 37868 [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor 255 : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-02-04 23:53:38.267 []  INFO 37868 [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate 262 : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-02-04 23:53:38.269 []  INFO 37868 [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate 132 : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-02-04 23:53:38.289 []  INFO 37868 [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate 201 : Finished Spring Data repository scanning in 6 ms. Found 0 Redis repository interfaces.
+2025-02-04 23:53:38.371 []  WARN 37868 [restartedMain] o.m.s.mapper.ClassPathMapperScanner      44 : No MyBatis mapper was found in '[com.yupi.springbootinit.mapper]' package. Please check your configuration.
+2025-02-04 23:53:38.784 []  INFO 37868 [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  108 : Tomcat initialized with port(s): 8990 (http)
+2025-02-04 23:53:38.789 []  INFO 37868 [restartedMain] o.a.coyote.http11.Http11NioProtocol      173 : Initializing ProtocolHandler ["http-nio-0.0.0.0-8990"]
+2025-02-04 23:53:38.789 []  INFO 37868 [restartedMain] o.apache.catalina.core.StandardService   173 : Starting service [Tomcat]
+2025-02-04 23:53:38.790 []  INFO 37868 [restartedMain] org.apache.catalina.core.StandardEngine  173 : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2025-02-04 23:53:38.840 []  INFO 37868 [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/api]    173 : Initializing Spring embedded WebApplicationContext
+2025-02-04 23:53:38.840 []  INFO 37868 [restartedMain] w.s.c.ServletWebServerApplicationContext 290 : Root WebApplicationContext: initialization completed in 1067 ms
+2025-02-04 23:53:39.779 []  INFO 37868 [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       59 : LiveReload server is running on port 35729
+2025-02-04 23:53:40.284 []  INFO 37868 [restartedMain] o.a.coyote.http11.Http11NioProtocol      173 : Starting ProtocolHandler ["http-nio-0.0.0.0-8990"]
+2025-02-04 23:53:40.290 []  INFO 37868 [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  220 : Tomcat started on port(s): 8990 (http) with context path '/api'
+2025-02-04 23:53:41.102 []  INFO 37868 [restartedMain] s.a.ScheduledAnnotationBeanPostProcessor 315 : No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2025-02-04 23:53:41.107 []  INFO 37868 [restartedMain] com.nika.recruit.RecruitApplication      61 : Started RecruitApplication in 3.645 seconds (JVM running for 4.17)
+2025-02-04 23:53:41.109 []  INFO 37868 [restartedMain] com.nika.recruit.RecruitApplication      21 : swagger 接口测试访问地址 http://localhost:8990/api/doc.html

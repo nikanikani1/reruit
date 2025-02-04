@@ -23,7 +23,7 @@ create table if not exists user
 -- 简历表
 CREATE TABLE resume (
     resumeId bigint AUTO_INCREMENT PRIMARY KEY COMMENT '简历的唯一标识符',
-    userId INT NOT NULL COMMENT '关联的用户ID，指向users表',
+    userId bigint NOT NULL COMMENT '关联的用户ID，指向users表',
     realName VARCHAR(255) NOT NULL COMMENT '真实姓名',
     summary TEXT COMMENT '个人简介或职业概述',
     experience TEXT COMMENT '工作经历，JSON格式存储详细经历',
@@ -33,5 +33,16 @@ CREATE TABLE resume (
     updateTime   datetime     default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '更新时间',
     isDelete     tinyint      default 0                 not null comment '是否删除'
 ) COMMENT='简历表，存储用户的简历信息';
+
+
+CREATE TABLE notification (
+    id bigint AUTO_INCREMENT PRIMARY KEY COMMENT '自动生成的主键ID', -- 自动生成的主键
+    title VARCHAR(255) NOT NULL COMMENT '通知的标题', -- 通知的标题
+    content TEXT NOT NULL COMMENT '通知的内容', -- 通知的内容
+    senderId bigint NOT NULL COMMENT '发送者的用户名或ID', -- 发送者
+    receiverId bigint NOT NULL COMMENT '接收者的用户名或ID', -- 接收者
+    createTime   datetime     default CURRENT_TIMESTAMP not null comment '创建时间', -- 创建时间，默认当前时间
+    isDelete     tinyint      default 0                 not null comment '是否删除' -- 是否删除，0表示未删除，1表示已删除
+) COMMENT='存储通知信息的表';
 
 

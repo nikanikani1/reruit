@@ -16,6 +16,7 @@ import com.nika.recruit.model.entity.Resume;
 import com.nika.recruit.service.ResumeService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -36,6 +37,10 @@ public class ResumeServiceImpl extends ServiceImpl<ResumeMapper, Resume> impleme
     @Override
     public boolean add(Resume resume,Long userId) {
         verify(resume);
+        Long count = resumeMapper.selectCount(new QueryWrapper<Resume>().eq("userId", userId));
+        if(count > 0){
+            throw new BusinessException(ErrorCode.SYSTEM_ERROR,"每人仅能保存一份简历");
+        }
         resume.setUserId(userId);
         return resumeMapper.insert(resume) > 0;
     }
