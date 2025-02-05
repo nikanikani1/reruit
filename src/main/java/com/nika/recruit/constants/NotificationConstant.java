@@ -20,5 +20,11 @@ public interface NotificationConstant {
 
     String RESUME_FINISH_TITLE = "简历修改完成通知";
 
+
+    /**
+     * 求职者 投递职位 通知
+     */
+    String JOB_VOTE_TITLE = "%s向您发布的职位 \"%s\" 发起了投递";
+    String JOB_VOTE_CONTENT = "请尽快查看该用户简历信息";
     
 }

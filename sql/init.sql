@@ -46,3 +46,37 @@ CREATE TABLE notification (
 ) COMMENT='存储通知信息的表';
 
 
+CREATE TABLE `job` (
+    `id` bigint AUTO_INCREMENT PRIMARY KEY COMMENT '自动生成的主键ID', -- 自动生成的主键
+    `title` VARCHAR(255) NOT NULL COMMENT '职位名称',
+    `description` TEXT NOT NULL COMMENT '职位描述',
+    `requirements` TEXT COMMENT '最低职位要求，用于粗筛，存储为JSON字符串',
+    `location` VARCHAR(255) NOT NULL COMMENT '工作地点',
+    `salaryRange` VARCHAR(255) NOT NULL COMMENT '薪资范围',
+    `companyName` VARCHAR(255) NOT NULL COMMENT '公司名称',
+    `benefits` VARCHAR(1024) NOT NULL COMMENT '额外福利，如有度假，五险一金等',
+    `posterId` bigint NOT NULL COMMENT '发布者ID，关联用户表',
+    `status` VARCHAR(50) COMMENT '职位状态（例如：活跃、已关闭）',
+    `createTime`   datetime     default CURRENT_TIMESTAMP not null comment '创建时间',
+    `updateTime`   datetime     default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '更新时间',
+    `isDelete`     tinyint      default 0                 not null comment '是否删除'
+) COMMENT='职位表';
+
+
+create table vote
+(
+    id         bigint auto_increment comment '自动生成的主键ID'
+        primary key,
+    jobId      bigint                             not null comment '发布者ID，关联用户表',
+    voterId    bigint                             not null comment '求职者ID，关联用户表',
+    matchScore int                                null comment '匹配分数0-100,由简历和职位描述由AI得出',
+    advice     text                               null comment 'AI根据职位描述，个性化的提出的建议',
+    createTime datetime default CURRENT_TIMESTAMP not null comment '创建时间',
+    updateTime datetime default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '更新时间',
+    isDelete   tinyint  default 0                 not null comment '是否删除',
+    constraint vote_pk
+        unique (voterId, jobId)
+)
+    comment '简历投递关系表';
+
+

@@ -45,7 +45,7 @@ public class ResumeController {
      */
     @PostMapping("/add")
     @ParameterCheck
-    @AuthCheck
+    @AuthCheck(mustRole = "jobseeker")
     public BaseResponse<Boolean> addResume(@RequestBody Resume resume,HttpServletRequest request) {
         boolean result = resumeService.add(resume,userService.getLoginUser(request).getId());
         ThrowUtils.throwIf(!result,new BusinessException(ErrorCode.SYSTEM_ERROR,"添加失败"));
@@ -60,7 +60,7 @@ public class ResumeController {
      */
     @GetMapping("/me")
     @ParameterCheck
-    @AuthCheck
+    @AuthCheck(mustRole = "jobseeker")
     public BaseResponse<Resume> getMyResume(HttpServletRequest request) {
         Long id = userService.getLoginUser(request).getId();
         return ResultUtils.success(resumeService.getMyResume(id));
@@ -73,7 +73,7 @@ public class ResumeController {
      */
     @PostMapping("/update")
     @ParameterCheck
-    @AuthCheck
+    @AuthCheck(mustRole = "jobseeker")
     public BaseResponse<Boolean> updateResume(@RequestBody Resume resume) {
         boolean res = resumeService.update(resume);
         if(res){

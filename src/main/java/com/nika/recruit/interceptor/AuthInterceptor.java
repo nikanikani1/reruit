@@ -53,7 +53,7 @@ public class AuthInterceptor {
             String userRole = loginUser.getUserRole();
             // 如果当前用户权限不等于注解里的权限，直接拒绝
             if (!mustRole.equals(userRole)) {
-                throw new BusinessException(ErrorCode.NO_AUTH_ERROR);
+                throw new BusinessException(ErrorCode.NO_AUTH_ERROR,"您的角色无法操作该方法");
             }
         }
         // 通过权限校验，放行
