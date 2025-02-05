@@ -1,5 +1,6 @@
 package com.nika.recruit;
 
+import com.nika.recruit.annotation.EnableDeepSeek;
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -10,6 +11,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @MapperScan("com.nika.recruit.mapper")
+@EnableDeepSeek
 @EnableScheduling
 @Slf4j
 public class RecruitApplication {

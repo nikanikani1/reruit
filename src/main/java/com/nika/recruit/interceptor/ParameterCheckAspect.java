@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 @Component
 public class ParameterCheckAspect {
 
-    @Around("execution(* com.nika.recruit.controller..*.*(..))")
+    @Around("@annotation(com.nika.recruit.annotation.ParameterCheck)")
     public Object process(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         Object[] args = proceedingJoinPoint.getArgs();
 
