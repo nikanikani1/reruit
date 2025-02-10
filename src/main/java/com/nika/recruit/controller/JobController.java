@@ -3,12 +3,12 @@ package com.nika.recruit.controller;
 
 import com.nika.recruit.annotation.AuthCheck;
 import com.nika.recruit.annotation.ParameterCheck;
-import com.nika.recruit.base.BaseResponse;
-import com.nika.recruit.base.ErrorCode;
-import com.nika.recruit.base.ResultUtils;
+import com.nika.recruit.base.*;
 import com.nika.recruit.exception.BusinessException;
+import com.nika.recruit.model.dto.job.JobQueryReq;
 import com.nika.recruit.model.entity.Job;
 import com.nika.recruit.model.entity.Resume;
+import com.nika.recruit.model.vo.JobVO;
 import com.nika.recruit.service.JobService;
 import com.nika.recruit.service.ResumeService;
 import com.nika.recruit.service.UserService;
@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 
 /**
@@ -62,6 +63,16 @@ public class JobController {
         return ResultUtils.success(jobService.closeJob(job.getId()));
     }
 
+    /**
+     * close job
+     * @return
+     */
+    @PostMapping("/open")
+    @AuthCheck(mustRole = "jobfinder")
+    public BaseResponse<Boolean> openJob(@RequestBody Job job) {
+        return ResultUtils.success(jobService.openJob(job.getId()));
+    }
+
 
     /**
      * update job
@@ -72,6 +83,29 @@ public class JobController {
     @AuthCheck(mustRole = "jobfinder")
     public BaseResponse<Boolean> updateJob(@RequestBody Job job) {
         return ResultUtils.success(jobService.updateJob(job));
+    }
+
+
+    /**
+     * update job
+     * @return
+     */
+    @GetMapping("/my")
+    @AuthCheck(mustRole = "jobfinder")
+    public BaseResponse<List<Job>> getMyJobs(HttpServletRequest request) {
+        Long userId = userService.getLoginUser(request).getId();
+        return ResultUtils.success(jobService.getMyJobs(userId));
+    }
+
+
+    /**
+     * update job
+     * @return
+     */
+    @PostMapping("/page")
+    @ParameterCheck
+    public BaseResponse<PageResult<JobVO>> pageJobs(@RequestBody JobQueryReq req) {
+        return ResultUtils.success(jobService.pageJobs(req));
     }
 
 

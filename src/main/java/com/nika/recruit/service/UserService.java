@@ -7,6 +7,7 @@ import com.nika.recruit.model.entity.User;
 import com.nika.recruit.model.vo.UserVO;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 
 /**
@@ -59,6 +60,11 @@ public interface UserService extends IService<User> {
      */
     UserVO getLoginUserVO(User user);
 
-
+    /**
+     * 获取用户id列表
+     * @param ids
+     * @return
+     */
+    List<User> batchGetUserByIds(List<Long> ids);
 
 }

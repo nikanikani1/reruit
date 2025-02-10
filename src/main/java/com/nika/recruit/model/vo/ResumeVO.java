@@ -1,6 +1,9 @@
-package com.nika.recruit.model.entity;
+package com.nika.recruit.model.vo;
 
-import com.baomidou.mybatisplus.annotation.*;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
@@ -14,54 +17,41 @@ import java.util.Date;
 import java.util.List;
 
 @Data
-@TableName(value = "resume",autoResultMap = true)
-public class Resume {
+public class ResumeVO {
+
     /**
      * id
      */
-    @TableId(type = IdType.ASSIGN_ID)
     @JsonSerialize(using= ToStringSerializer.class)
     private Long resumeId;
 
-    /**
-     * 关联的用户ID
-     */
-    @JsonSerialize(using= ToStringSerializer.class)
-    private Long userId;
 
+    private UserVO userVO;
 
     /**
      * 关联的用户ID
      */
-    @NotNull(message = "真实姓名非空")
     private String realName;
 
     /**
      * 简历的摘要或简介
      */
-    @NotNull(message = "简介非空")
     private String summary;
 
     /**
      * 工作经历列表
      */
-    @TableField(typeHandler = JacksonTypeHandler.class)
-    @NotNull
     private List<Experience> experience;
 
     /**
      * 教育背景列表
      */
-    @TableField(typeHandler = JacksonTypeHandler.class)
-    @NotNull
+
     private List<Education> education;
 
-    /**
-     * 技能信息
-     */
-    @TableField(typeHandler = JacksonTypeHandler.class)
-    @NotNull
+
     private Skills skills;
+
     /**
      * 创建时间
      */
@@ -72,10 +62,5 @@ public class Resume {
      */
     private Date updateTime;
 
-    /**
-     * 是否删除
-     */
-    @TableLogic
-    private Integer isDelete;
 
 }

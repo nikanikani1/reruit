@@ -1,5 +1,6 @@
 package com.nika.recruit.service.impl;
 
+import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.RandomUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -19,6 +20,8 @@ import org.springframework.util.DigestUtils;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+
+import java.util.List;
 
 import static com.nika.recruit.constants.UserConstant.USER_LOGIN_STATE;
 
@@ -163,8 +166,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return loginUserVO;
     }
 
-
-
+    @Override
+    public List<User> batchGetUserByIds(List<Long> ids) {
+        if(CollectionUtil.isEmpty(ids)){
+            throw new BusinessException(ErrorCode.PARAMS_ERROR,"userid 列表为空");
+        }
+        return this.list(new QueryWrapper<User>().in("id",ids));
+    }
 
 
 }

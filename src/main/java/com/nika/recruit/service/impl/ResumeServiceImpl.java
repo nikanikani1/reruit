@@ -67,7 +67,7 @@ public class ResumeServiceImpl extends ServiceImpl<ResumeMapper, Resume> impleme
 
             List<String> achievements = experience.getAchievements();
             if(CollectionUtil.isEmpty(achievements)){
-                throw new BusinessException(ErrorCode.PARAMS_ERROR,"startDate should before endDate");
+                throw new BusinessException(ErrorCode.PARAMS_ERROR,"工作成就列表非空");
             }
         }
     }

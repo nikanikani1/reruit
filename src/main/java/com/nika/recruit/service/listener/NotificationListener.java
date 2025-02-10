@@ -4,6 +4,7 @@ import com.nika.recruit.constants.NotificationConstant;
 import com.nika.recruit.model.entity.Job;
 import com.nika.recruit.model.entity.Notification;
 import com.nika.recruit.model.entity.User;
+import com.nika.recruit.model.enums.NotificationTypeEnum;
 import com.nika.recruit.service.JobService;
 import com.nika.recruit.service.NotificationService;
 import com.nika.recruit.service.UserService;
@@ -51,6 +52,7 @@ public class NotificationListener {
                 .title(NotificationConstant.RESUME_FINISH_TITLE)
                 .content(NotificationConstant.RESUME_FINISH_CONTENT)
                 .senderId(DEFAULT_SENDER_ID)
+                .type(NotificationTypeEnum.SYSTEM.getValue())
                 .receiverId(userId).build();
         boolean res = notificationService.addNotification(notification);
         if(!res){
@@ -70,6 +72,7 @@ public class NotificationListener {
                 .title(NotificationConstant.NOTIFY_RESUME_FINISH_TITLE)
                 .content(NotificationConstant.NOTIFY_RESUME_FINISH_CONTENT)
                 .senderId(DEFAULT_SENDER_ID)
+                .type(NotificationTypeEnum.RECRUITMENT.getValue())
                 .receiverId(userId)
                 .build();
         boolean res = notificationService.addNotification(notification);
@@ -94,6 +97,7 @@ public class NotificationListener {
                 .content(NotificationConstant.JOB_VOTE_CONTENT)
                 .senderId(userId)
                 .receiverId(job.getPosterId())
+                .type(NotificationTypeEnum.RECRUITMENT.getValue())
                 .build();
         boolean res = notificationService.addNotification(notification);
         if(!res){

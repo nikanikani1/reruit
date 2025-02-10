@@ -3,7 +3,6 @@ package com.nika.recruit.service.impl;
 import cn.hutool.http.ContentType;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
-import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.nika.recruit.constants.PromptConstant;
@@ -165,7 +164,65 @@ public class DeepSeekServiceImpl implements DeepSeekService {
                 "        \"团队协作\",\n" +
                 "      ]\n" +
                 "    },\n" +
-                "}\n" +
-                "]"));
+                "},\n" +
+                "{\n" +
+                        "  \"realName\": \"李娜\",\n" +
+                        "  \"summary\": \"具有7年前端开发经验的Web工程师，熟练掌握React和Vue.js框架，能够构建用户友好的交互式Web应用。\",\n" +
+                        "  \"experience\": [\n" +
+                        "    {\n" +
+                        "      \"company\": \"蓝图科技有限公司\",\n" +
+                        "      \"position\": \"前端技术负责人\",\n" +
+                        "      \"startDate\": \"2017-04-01\",\n" +
+                        "      \"endDate\": \"2021-04-01\",\n" +
+                        "      \"description\": \"领导前端团队，负责公司多个重点项目的前端开发和维护工作，通过引入Webpack和ES6新特性，优化了开发流程和页面性能。\",\n" +
+                        "      \"achievements\": [\n" +
+                        "        \"带领团队成功实施了三个大型Web项目的前端开发\",\n" +
+                        "        \"通过技术分享和培训，提升了团队整体技术水平\"\n" +
+                        "      ]\n" +
+                        "    },\n" +
+                        "    {\n" +
+                        "      \"company\": \"星河网络有限公司\",\n" +
+                        "      \"position\": \"前端开发工程师\",\n" +
+                        "      \"startDate\": \"2013-09-01\",\n" +
+                        "      \"endDate\": \"2017-03-31\",\n" +
+                        "      \"description\": \"负责公司官网及多个产品线的Web前端设计和开发工作，与UI设计师和后端工程师紧密合作，确保产品按时上线。\",\n" +
+                        "      \"achievements\": [\n" +
+                        "        \"参与开发的产品线获得用户好评，并带来显著的业务增长\",\n" +
+                        "        \"被评为年度优秀员工\"\n" +
+                        "      ]\n" +
+                        "    }\n" +
+                        "  ],\n" +
+                        "  \"education\": [\n" +
+                        "    {\n" +
+                        "      \"institution\": \"复旦大学\",\n" +
+                        "      \"degree\": \"软件工程硕士\",\n" +
+                        "      \"startDate\": \"2011-09-01\",\n" +
+                        "      \"endDate\": \"2013-06-30\",\n" +
+                        "      \"gpa\": 3.75,\n" +
+                        "      \"honors\": [\n" +
+                        "        \"获得研究生国家奖学金\",\n" +
+                        "        \"优秀研究生\"\n" +
+                        "      ]\n" +
+                        "    },\n" +
+                        "    {\n" +
+                        "      \"institution\": \"华东师范大学\",\n" +
+                        "      \"degree\": \"计算机科学与技术学士\",\n" +
+                        "      \"startDate\": \"2008-09-01\",\n" +
+                        "      \"endDate\": \"2012-06-30\",\n" +
+                        "      \"gpa\": 3.6,\n" +
+                        "      \"honors\": [\n" +
+                        "        \"多次获得学业奖学金\",\n" +
+                        "        \"计算机科学与技术专业优秀毕业生\"\n" +
+                        "      ]\n" +
+                        "    }\n" +
+                        "  ],\n" +
+                        "  \"skills\": {\n" +
+                        "    \"programmingLanguages\": [\"JavaScript\", \"HTML5\", \"CSS3\"],\n" +
+                        "    \"tools\": [\"React\", \"Vue.js\", \"Webpack\", \"npm\"],\n" +
+                        "    \"softSkills\": [\"项目管理\", \"团队协作\", \"创新思维\"]\n" +
+                        "  }\n" +
+                        "}" +
+                "]"
+        ));
     }
 }

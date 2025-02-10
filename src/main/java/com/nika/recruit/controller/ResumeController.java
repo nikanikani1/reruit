@@ -74,10 +74,11 @@ public class ResumeController {
     @PostMapping("/update")
     @ParameterCheck
     @AuthCheck(mustRole = "jobseeker")
-    public BaseResponse<Boolean> updateResume(@RequestBody Resume resume) {
+    public BaseResponse<Boolean> updateResume(@RequestBody Resume resume,HttpServletRequest request) {
         boolean res = resumeService.update(resume);
+        Long userId = userService.getLoginUser(request).getId();
         if(res){
-            publisher.publishEvent(new SaveResumeEvent(resume.getResumeId(), resume.getUserId()));
+            publisher.publishEvent(new SaveResumeEvent(resume.getResumeId(), userId));
         }
         return ResultUtils.success(res);
     }
